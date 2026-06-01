@@ -31,9 +31,6 @@ The system generates a cognitive communication profile from an uploaded speech r
 - Plotly
 - Scikit-Learn
 
-## Project Structure
-
-(brief folder tree)
 
 ## Running Locally
 
