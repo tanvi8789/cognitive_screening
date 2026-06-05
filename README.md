@@ -25,19 +25,7 @@ The goal is to demonstrate how accessible, speech-based screening could compleme
 
 ## Results
 
-The dashboard summarises each recording across the four analysis dimensions and produces an exportable profile.
-
-<div align="center">
-
-![Dashboard overview](assets/dashboard.png)
-*Interactive screening dashboard*
-
-![Generated profile](assets/results.png)
-*Cognitive-communication profile with per-dimension scores*
-
-</div>
-
-> Replace `dashboard.png` / `results.png` with the actual filenames of the screenshots in your `assets/` folder.
+The dashboard summarises each recording across the four analysis dimensions and produces an exportable profile which have been added to the assets folder of this repo.
 
 ---
 
