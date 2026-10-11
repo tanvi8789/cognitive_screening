@@ -31,13 +31,12 @@ The system generates a cognitive communication profile from an uploaded speech r
 - Plotly
 - Scikit-Learn
 
-## Project Structure
-
-(brief folder tree)
 
 ## Running Locally
 
-pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
 streamlit run src/app.py
 
 ## Future Work

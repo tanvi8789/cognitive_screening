@@ -1,6 +1,12 @@
 import streamlit as st
+import sys
 import tempfile
 import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.cognitive_features.profile_generator import (
     generate_profile
@@ -14,6 +20,14 @@ from src.reporting.interpreter import (
     interpret_profile
 )
 
+# Database and auth imports
+from sqlmodel import select
+from src.database import create_db_and_tables, get_session
+from src.models import User, Assessment
+from src.auth import hash_password, verify_password
+from src.config import load_config
+import json
+
 from src.services.chart_generator import (
     create_radar_chart
 )
@@ -23,6 +37,9 @@ st.set_page_config(
     page_title="AI Cognitive Wellness Screening",
     layout="wide"
 )
+
+# Initialize database (create tables) on first run
+create_db_and_tables()
 
 st.title(
     "AI Cognitive Wellness Screening System"

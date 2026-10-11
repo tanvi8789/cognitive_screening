@@ -1,4 +1,6 @@
 altair==6.1.0
+sqlmodel==0.0.48
+passlib[bcrypt]==1.7.4
 annotated-doc==0.0.4
 anyio==4.13.0
 appnope==0.1.4

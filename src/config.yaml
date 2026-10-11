@@ -1,0 +1,4 @@
+silence_thresholds:
+  low: 10
+  moderate: 25
+
