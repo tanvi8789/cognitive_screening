@@ -1,46 +1,118 @@
-# AI Cognitive Wellness Screening System
+<div align="center">
+
+# AI Cognitive Wellness Screening
+
+**Analysing spontaneous speech to surface early signals of cognitive change.**
+
+![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=flat-square&logo=python&logoColor=white)
+![Whisper](https://img.shields.io/badge/ASR-Whisper-412991?style=flat-square&logo=openai&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+
+</div>
+
+---
 
 ## Overview
 
-An AI-powered speech analysis platform that evaluates communication patterns through:
+This tool analyses a short speech recording and generates a **cognitive-communication profile**. From spontaneous speech it extracts temporal, fluency, lexical and semantic features — communication patterns that research has linked to cognitive health — and presents them through an interactive dashboard with a downloadable report.
 
-- Temporal analysis
-- Fluency analysis
-- Language analysis
-- Semantic analysis
+The goal is to demonstrate how accessible, speech-based screening could complement traditional cognitive assessment, which is often clinical, time-consuming and inaccessible.
 
-The system generates a cognitive communication profile from an uploaded speech recording.
+> **Disclaimer.** This is a research and educational project. It does **not** diagnose any medical condition and is **not** a substitute for professional clinical assessment. Results are indicative signals only.
 
-## Features
+---
 
-- Speech-to-text transcription using Whisper
-- Pause and silence detection
-- Speech rate analysis
-- Lexical diversity analysis
-- Topic consistency analysis using Sentence Transformers
-- Interactive Streamlit dashboard
-- Downloadable reports
+## Results
+
+The dashboard summarises each recording across the four analysis dimensions and produces an exportable profile which have been added to the assets folder of this repo.
+
+---
+
+## How It Works
+
+```
+ Speech recording
+        │
+        ▼
+ Transcription  ──────────────  Whisper (speech → text)
+        │
+        ▼
+ Four parallel analyses
+   ├─ Temporal    →  speech rate, pauses, silence ratio
+   ├─ Fluency     →  hesitations, filler/disruption patterns
+   ├─ Lexical     →  vocabulary richness, lexical diversity
+   └─ Semantic    →  topic consistency (sentence embeddings)
+        │
+        ▼
+ Cognitive-communication profile  →  dashboard + downloadable report
+```
+
+| Dimension | What it measures | Key library |
+|---|---|---|
+| **Temporal** | Speech rate, pause frequency and length, silence ratio | Librosa |
+| **Fluency** | Disruptions and hesitation patterns in delivery | Librosa / custom |
+| **Lexical** | Lexical diversity and vocabulary richness | scikit-learn |
+| **Semantic** | Topic consistency and coherence across the response | Sentence-Transformers |
+
+---
 
 ## Tech Stack
 
-- Python
-- Whisper
-- Librosa
-- Sentence Transformers
-- Streamlit
-- Plotly
-- Scikit-Learn
+- **Language:** Python
+- **Speech-to-text:** Whisper
+- **Audio features:** Librosa
+- **Semantic analysis:** Sentence-Transformers
+- **Modelling:** scikit-learn
+- **Dashboard & visualisation:** Streamlit, Plotly
 
+---
 
-## Running Locally
+## Project Structure
 
+```
+cognitive_screening/
+├── assets/            # Screenshots and static assets
+├── datasets/          # Input data (not committed if restricted)
+├── models/            # Saved models / artifacts
+├── src/
+│   └── app.py         # Streamlit entry point
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Getting Started
+
+```bash
+# 1. Clone
+git clone https://github.com/tanvi8789/cognitive_screening.git
+cd cognitive_screening
+
+# 2. Create an environment and install dependencies
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
+
+# 3. Run the dashboard
 streamlit run src/app.py
+```
+
+Upload a speech recording through the interface to generate a profile.
+
+---
+
+## Limitations
+
+- Validated on a limited dataset; not tested across diverse accents, languages or recording conditions.
+- Feature thresholds are indicative and have not been clinically calibrated.
+- Output is a screening signal, not a diagnosis.
+
+---
 
 ## Future Work
 
-- Clinical voice biomarker integration
-- SHAP-based explainability
-- Longitudinal tracking
+- SHAP-based explainability for per-feature contribution.
+- Longitudinal tracking to detect change over time rather than a single snapshot.
+- Integration of established clinical voice biomarkers.
